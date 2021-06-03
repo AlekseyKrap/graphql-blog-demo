@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <nav>
-      <div className="left">
+      <div className='left'>
         <Link href="/">
           <a className="bold" data-active={isActive("/")}>
             Blog
