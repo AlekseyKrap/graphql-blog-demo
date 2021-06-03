@@ -36,12 +36,27 @@ jobs:
   prettier:
     needs: build
     # имя для отображения в интерфейсе GitHub
-    name: ESLint
+    name: prettier
     runs-on: ubuntu-latest
     container:
       # возьмем Docker образ Node.js из публичного реестра
       image: node:14.17.0-alpine
     steps:
+      # указываем action, который будет запущен как часть job
+      # В текущем случае это клонирование репозитория
+      - uses: actions/checkout@v2
+      # Кеширование npm
+      - name: Cache dependencies
+        # включаем специальный action
+        uses: actions/cache@v2
+        # передаем параметры
+        with:
+          # что кешировать (путь)
+          path: ~/.npm
+          # ключ кеширования (хеш)
+          key: npm-${{ hashFiles('package-lock.json') }}
+          # ключ для восстановления кеша
+          restore-keys: npm-
     - name: Prettify our source code with Prettier
       run: npm run check:format
       continue-on-error: true
