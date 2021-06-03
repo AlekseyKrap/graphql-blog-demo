@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       # возьмем Docker образ Node.js из публичного реестра
-      image: node:14.17.0-alpine
+      image: node:14.17.0-stretch-slim
     steps:
       # указываем action, который будет запущен как часть job
       # В текущем случае это клонирование репозитория
