@@ -10,6 +10,7 @@
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json pages/api",
     "check:format": "prettier --check .",
+    "check:tsc": "tsc --noEmit",
     "format": "prettier --write ."
   },
   "keywords": [],

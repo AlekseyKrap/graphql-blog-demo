@@ -50,6 +50,7 @@ function Signup() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address)"
             type="text"
+            // type={1}
             value={email}
           />
           <input disabled={!name || !email} type="submit" value="Signup" />
