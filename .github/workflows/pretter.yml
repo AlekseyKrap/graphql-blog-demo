@@ -38,10 +38,13 @@ jobs:
     # имя для отображения в интерфейсе GitHub
     name: ESLint
     runs-on: ubuntu-latest
-      steps:
-      - name: Prettify our source code with Prettier
-        run: npm run check:format
-        continue-on-error: true
-      - name: Check our source code with TypeScript
-        run: npm run check:tsc
+    container:
+      # возьмем Docker образ Node.js из публичного реестра
+      image: node:14.17.0-alpine
+    steps:
+    - name: Prettify our source code with Prettier
+      run: npm run check:format
+      continue-on-error: true
+    - name: Check our source code with TypeScript
+      run: npm run check:tsc
 
