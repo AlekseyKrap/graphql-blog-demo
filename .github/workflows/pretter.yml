@@ -57,9 +57,9 @@ jobs:
           key: npm-${{ hashFiles('package-lock.json') }}
           # ключ для восстановления кеша
           restore-keys: npm-
-    - name: Prettify our source code with Prettier
-      run: npm run check:format
-      continue-on-error: true
-    - name: Check our source code with TypeScript
-      run: npm run check:tsc
+      - name: Prettify our source code with Prettier
+        run: npm run check:format
+        continue-on-error: true
+      - name: Check our source code with TypeScript
+        run: npm run check:tsc
 
