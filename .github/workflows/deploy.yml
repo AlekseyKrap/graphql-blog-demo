@@ -29,9 +29,6 @@ jobs:
           --exclude .gitignore \
           --exclude .git \
           . deploy@157.245.88.102:~/realworld/
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          ssh-known-hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
       # job для перезапуска приложения при помощи pm2
       - name: Restart the application
         run: |
