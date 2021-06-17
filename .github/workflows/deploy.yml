@@ -16,7 +16,7 @@ jobs:
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          echo "SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
       - name: Copy files to the server
         # через переменные окружения передаем SSH ключ
         env:
