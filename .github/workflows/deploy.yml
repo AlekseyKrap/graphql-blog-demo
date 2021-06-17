@@ -21,7 +21,7 @@ jobs:
         # через переменные окружения передаем SSH ключ
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNONN_HOSTS }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         # заливаем файлы при помощи rsync
         run: |
           rsync -a --progress --human-readable --delete \
@@ -36,4 +36,4 @@ jobs:
           ssh deploy@157.245.88.102 "pushd ~/realworld && npm install && popd && pm2 restart realworld"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNONN_HOSTS }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
