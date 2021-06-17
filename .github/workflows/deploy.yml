@@ -31,7 +31,7 @@ jobs:
         run: |
           rsync -a --progress --human-readable --delete \
           --exclude-from '.gitignore' \
-          --exclude .gitignore \
+          --exclude '.gitignore' \
           --exclude .git \
           --exclude public \
           . deploy@172.104.151.230:~/realworld/
