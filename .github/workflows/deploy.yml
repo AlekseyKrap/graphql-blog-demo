@@ -33,7 +33,8 @@ jobs:
           --exclude-from '.gitignore' \
           --exclude '.gitignore' \
           --exclude .git \
-          --exclude public \ .
+          --exclude public \
+          . deploy@157.245.88.102:~/realworld/
       # job для перезапуска приложения при помощи pm2
       - name: Restart the application
         run: |
