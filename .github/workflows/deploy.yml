@@ -18,14 +18,12 @@ jobs:
           chmod 700 ~/.ssh
           chmod 600 ~/.ssh/id_rsa
           echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          echo "$SSH_PUB_KEY" > ~/.ssh/id_rsa.pub
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          SSH_PUB_KEY: ${{ secrets.SSH_PUB_KEY }}
       - name: Copy files to the server
-        # через переменные окружения передаем SSH ключ
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         # заливаем файлы при помощи rsync
         run: |
           rsync -a --progress --human-readable --delete \
