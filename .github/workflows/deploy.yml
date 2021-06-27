@@ -19,14 +19,16 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
           echo "$SSH_PUB_KEY" > ~/.ssh/id_rsa.pub
+          echo "$RSYNC_PASSWORD" > ~/.ssh/key.txt
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
           SSH_PUB_KEY: ${{ secrets.SSH_PUB_KEY }}
+          RSYNC_PASSWORD: ${{ secrets.RSYNC_PASSWORD }}
       - name: Copy files to the server
         # заливаем файлы при помощи rsync
         run: |
-          rsync -a --progress --human-readable --delete \
+          rsync -a --progress --human-readable --delete --password-file ~/.ssh/key.txt \
           --exclude-from '.gitignore' \
           --exclude .gitignore \
           --exclude .git \
