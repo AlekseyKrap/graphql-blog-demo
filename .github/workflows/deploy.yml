@@ -28,13 +28,12 @@ jobs:
       - name: Copy files to the server
         # заливаем файлы при помощи rsync
         run: |
-          rsync -a --progress --human-readable --delete --password-file ~/.ssh/key.txt \
+          rsync -a --progress --human-readable --delete \
           --exclude-from '.gitignore' \
           --exclude .gitignore \
           --exclude .git \
           . deploy@157.245.88.102:~/realworld/
-        env:
-          RSYNC_PASSWORD: ${{ secrets.RSYNC_PASSWORD }}
+
       # job для перезапуска приложения при помощи pm2
       - name: Restart the application
         run: |
