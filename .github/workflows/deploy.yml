@@ -31,6 +31,8 @@ jobs:
           --exclude .gitignore \
           --exclude .git \
           . deploy@157.245.88.102:~/realworld/
+        env:
+          RSYNC_PASSWORD: ${{ secrets.RSYNC_PASSWORD }}
       # job для перезапуска приложения при помощи pm2
       - name: Restart the application
         run: |
