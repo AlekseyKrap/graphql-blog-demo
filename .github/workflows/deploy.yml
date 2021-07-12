@@ -30,11 +30,11 @@ jobs:
           --exclude-from '.gitignore' \
           --exclude .gitignore \
           --exclude .git \
-          . deploy@161.35.11.141:~/realworld/
+          . deploy@167.99.190.161:~/realworld/
       # job для перезапуска приложения при помощи pm2
       - name: Restart the application
         run: |
-          ssh deploy@161.35.11.141 "pushd ~/realworld && npm install && popd && pm2 restart realworld"
+          ssh deploy@167.99.190.161 "pushd ~/realworld && npm install && popd && pm2 restart realworld"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
