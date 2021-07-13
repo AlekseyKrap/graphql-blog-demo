@@ -34,5 +34,5 @@ jobs:
       # job для перезапуска приложения при помощи pm2
       - name: Restart the application
         run: |
-          ssh deploy@167.99.190.161 "pushd ~/realworld && npm install && popd && pm2 restart realworld"
+          ssh deploy@167.99.190.161 "pushd ~/realworld && npm install && popd && pm2 restart ecosystem.config.js"
 
